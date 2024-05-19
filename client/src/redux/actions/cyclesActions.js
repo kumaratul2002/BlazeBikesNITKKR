@@ -6,7 +6,7 @@ export const getAllCycles=()=>async dispatch=>{
     dispatch({type: 'LOADING' , payload:true})
 
     try {
-        const response = await axios.get('/api/cycles/getallcycles')
+        const response = await axios.get('${window.location.origin}/api/cycles/getallcycles')
         dispatch({type: 'GET_ALL_CYCLES', payload:response.data})
         dispatch({type: 'LOADING' , payload:false})
     } catch (error) {
@@ -22,7 +22,7 @@ export const addCycle=(reqObj)=>async dispatch=>{
 
     try {
         console.log("cycle adding")
-         await axios.post('/api/cycles/addcycle' , reqObj)
+         await axios.post('${window.location.origin}/api/cycles/addcycle' , reqObj)
        
          dispatch({type: 'LOADING' , payload:false})
          message.success('New cycle added successfully')
@@ -42,7 +42,7 @@ export const editCycle=(reqObj)=>async dispatch=>{
     dispatch({type: 'LOADING' , payload:true})
 
     try {
-         await axios.post('/api/cycles/editcycle' , reqObj)
+         await axios.post('${window.location.origin}/api/cycles/editcycle' , reqObj)
        
          dispatch({type: 'LOADING' , payload:false})
          message.success('Cycle details updated successfully')
@@ -62,7 +62,7 @@ export const deleteCycle=(reqObj)=>async dispatch=>{
     dispatch({type: 'LOADING' , payload:true})
 
     try {
-         await axios.post('/api/cycles/deletecycle' , reqObj)
+         await axios.post('${window.location.origin}/api/cycles/deletecycle' , reqObj)
        
          dispatch({type: 'LOADING' , payload:false})
          message.success('Cycle deleted successfully')
